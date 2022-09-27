@@ -15,11 +15,25 @@ h1{
 	font-size: 2.2em;
 }
 
-p{
+#job-title{
 	font-weight: bold;
 }
 
 .experience, .education{
 	border: 2px dashed darkgoldenrod;
 	margin: 10px 0px 10px;
+}
+
+header:hover{
+	color: red;
+}
+
+h2::first-letter{
+	font-size: 3em;
+}
+
+a[href*="github"]::after{
+	content: url("../images/GitHub-Mark-32px.png");
+	width: 32px;
+	height: 32px;
 }
