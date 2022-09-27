@@ -1,0 +1,28 @@
+body{
+	background-color: rgb(231,225,214);
+	font-family: 'Roboto';
+	font-weight: 400;
+}
+
+header{
+	text-align: center;
+	border: 5px;
+	border-bottom: 2px dotted darkslateblue;
+}
+
+h1{
+	color: #1050aa;
+	font-family: 'Georgia', 'Times New Roman', 'Times, serif';
+	font-size: 2.2em;
+}
+
+#experience{
+	font-weight: bold;
+}
+
+p.class{
+	border-style: dashed;
+	border: 2px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
