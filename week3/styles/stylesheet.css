@@ -24,12 +24,12 @@ h1{
 	margin: 10px 0px 10px;
 }
 
-header:hover{
+a[href*="github"]:hover{
 	color: red;
 }
 
 h2::first-letter{
-	font-size: 3em;
+	font-size: 3rem;
 }
 
 a[href*="github"]::after{
