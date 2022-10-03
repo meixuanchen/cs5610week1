@@ -37,3 +37,11 @@ a[href*="github"]::after{
 	width: 32px;
 	height: 32px;
 }
+
+.education .education-list > li :first-child{
+	font-style: italic;
+}
+
+.skills ul{
+	list-style-type: none;
+}
