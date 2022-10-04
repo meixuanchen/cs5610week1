@@ -1,0 +1,61 @@
+body{
+	background-image: url("./images/background.jpg");
+	color:aliceblue;
+	text-align: center;
+}
+
+main{
+	width: 80%;
+}
+
+header{
+	width: 100%;
+}
+
+li{
+	list-style-type: none;
+}
+
+.mypicture{
+	height: 50vh;
+ 	width: auto;
+}
+
+a[href*="github"]::after{
+	content: url("./images/github.png");
+}
+
+a[href*="chen.meix@northeastern.edu"]::before{
+	content: url("./images/email.jpeg");
+}
+
+a[href*="www.northeastern.edu"]::after{
+	content: url("./images/NEU.jpg");
+}
+
+footer{
+	text-align: center;
+	padding:10px;
+	border: 3px dashed lightblue;
+}
+
+a:link{
+	color: orange;
+}
+
+a:visited {
+	color: pink;
+}
+
+nav ul {
+	margin: 5px;
+	padding: 5px;
+	overflow: hidden;
+	background-color: dodgerblue;
+  }
+
+  nav li {
+	float: none;
+	display: inline;
+	padding: 10px 10px;
+  }
