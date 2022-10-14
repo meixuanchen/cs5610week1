@@ -1,31 +1,27 @@
-let mode = localStorage.getItem("mode");
+const themeToggle = document.querySelector("#changeTheme");
 
-const selectLightMode = () =>{
-	document.body.classList.add('light-mode');
-	localStorage.setItem('mode', 'light')
+const currentTheme = localStorage.getItem("theme");
+const pageTheme = document.body;
+
+let isDark = false;
+
+if (currentTheme === "light") {
+  pageTheme.classList.add("light-theme");
+  themeToggle.innerText="Toggle dark theme";
+} else {
+    themeToggle.innerText = "Toggle light theme"
 }
 
-const selectDarktMode = () =>{
-	document.body.classList.remove('light-mode');
-	localStorage.setItem('mode', 'dark')
+function themeMode() {
+    isDark = !isDark;
+    isDark ? themeToggle.innerText = "Toggle light theme" : themeToggle.innerText = "Toggle dark theme";
+    pageTheme.classList.toggle("light-theme");
+
+    let theme = "dark";
+    if (pageTheme.classList.contains("light-theme")) {
+      theme = "light";
+    }
+    localStorage.setItem("theme", theme);
 }
 
-if (mode === 'light'){selectLightMode();}
-else selectDarktMode();
-
-
-function toggleTheme(){
-	changeBackground();
-	changeText();
-}
-
-function changeBackground(){
-	var element = document.body;
-	element.classList.toggle("light-mode");
-}
-
-function changeText(){
-	var switchbutton = document.getElementById("changeTheme");
-	if (switchbutton.innerText === "Toggle light mode"){ switchbutton.innerText = "Toggle dark mode";}
-	else switchbutton.innerText = "Toggle light mode";
-}
+themeToggle.addEventListener("click", themeMode)

@@ -4,7 +4,7 @@ body{
 	text-align: center;
 }
 
-.light-mode{
+.light-theme{
 	background-image: url("../images/background-light.jpg");
 	color:black;
 }
