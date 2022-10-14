@@ -4,12 +4,23 @@ body{
 	text-align: center;
 }
 
+.light-mode{
+	background-image: url("../images/background-light.jpg");
+	color:black;
+}
+
 main{
 	width: 80%;
 }
 
 header{
 	width: 100%;
+}
+
+button{
+	position: absolute;
+	top: 0px;
+	right: 0px;
 }
 
 li{
@@ -40,7 +51,7 @@ footer{
 }
 
 a:link{
-	color: orange;
+	color: green;
 }
 
 a:visited {
