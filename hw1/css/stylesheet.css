@@ -17,10 +17,22 @@ header{
 	width: 100%;
 }
 
-button{
+#changeTheme {
 	position: absolute;
 	top: 0px;
 	right: 0px;
+}
+
+#datebutton {
+	position: relative;
+	top: 5px;
+	right: 5px;
+}
+
+#timebutton {
+	position: relative;
+	top: 5px;
+	right: 5px;
 }
 
 li{
