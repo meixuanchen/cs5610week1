@@ -1,12 +1,15 @@
 const express = require('express');
-const router = require('./routes/tasks');
+const router = require('./routes/wishlists');
+const path = require('path');
 const db = require('./db');
-// const { connectionToDB } = require('./db');
-// db.connectionToDB();
+// const { connectionToDB } = require('./db.js');
+db.connectionToDB();
 
-const {connectionToDB, addTODB} = require('./db');
-//addTODB({title:'test', date: 'now'});
+const {connectionToDB} = require('./db');
+connectionToDB();
 
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 
@@ -17,11 +20,11 @@ const port = 3000;
 app.set("views", "views");
 app.set("view engine", "bug");
 app.use(express.static("public"));
-app.use("/api/tasks", router);
+app.use("/api/newitem", router);
 
 
 app.get("/", function(req,res){
-	res.send("hellow");
+	res.sendFile(path.join(__dirname,'./public','about.html'));
 });
 
 app.listen(port,()=>{

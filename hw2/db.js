@@ -1,10 +1,12 @@
 const {MongoClient} = require('mongodb');
+
 require('dotenv').config();
 const uri = process.env.mongodb;
 const client = new MongoClient(uri);
+
 module.exports = {
 	connectionToDB:
-	async()=>{
+	async function(){
 		try{
 			await client.connect()
 			console.log("connecting")
@@ -15,15 +17,9 @@ module.exports = {
 		
 	},
 	readAll: async function(){
-		const cursor = await client.db("CS5610").collection("tasks").find();
+		const cursor = await client.db("CS5610").collection("wishlists").find();
 		const data = await cursor.toArray();
-		const result = await client.db("CS5610").collection("tasks").insertOne(task);
-		return data;
-	},
-	readOne: async function(query){
-		const cursor = await client.db("CS5610").collection("tasks").findOne(query);
-		const data = await cursor.toArray();
+		const result = await client.db("CS5610").collection("wishlists").insertOne(newitem);
 		return data;
 	}
 }
-
