@@ -16,10 +16,25 @@ module.exports = {
 		}
 		
 	},
+	addToDB: async function (item) {
+        try {
+            const result = await client.db("hw2").collection("wishlist").insertOne(item);
+            console.log(result);
+        }
+        catch (err) {
+            console.log("insert error", err)
+        }
+    },
 	readAll: async function(){
-		const cursor = await client.db("CS5610").collection("wishlists").find();
+		const cursor = await client.db("hw2").collection("wishlists").find();
 		const data = await cursor.toArray();
-		const result = await client.db("CS5610").collection("wishlists").insertOne(newitem);
+		// const result = await client.db("CS5610").collection("wishlists").insertOne(newitem);
 		return data;
-	}
+	},
+    readOne: async function (filter) {
+         const result = await client.db("hw2").collection("wishlists").findOne(filter);
+
+        return result;
+    }
 }
+

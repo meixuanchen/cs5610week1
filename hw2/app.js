@@ -9,7 +9,10 @@ const {connectionToDB} = require('./db');
 connectionToDB();
 
 const dotenv = require('dotenv');
+const { addToDB } = require('./db');
 dotenv.config();
+
+
 
 const app = express();
 
@@ -18,13 +21,14 @@ app.use(express.urlencoded());
 
 const port = 3000;
 app.set("views", "views");
-app.set("view engine", "bug");
+app.set("view engine", "pug");
 app.use(express.static("public"));
 app.use("/api/newitem", router);
 
 
 app.get("/", function(req,res){
 	res.sendFile(path.join(__dirname,'./public','about.html'));
+	
 });
 
 app.listen(port,()=>{
