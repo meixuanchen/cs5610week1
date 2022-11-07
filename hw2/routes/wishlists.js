@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const item = require(path.join(__dirname,'../models/items.js'))
+const Item = require(path.join(__dirname,'../models/items.js'));
 
 router.get('/new', function (req, res) {
 	res.render('items/new');
@@ -9,21 +9,17 @@ router.get('/new', function (req, res) {
 
 router.get("/", async (req, res) => {
 	const items = await Item.find({});
-	res.render("items/index", { items });
+	res.render("items/index",{items: items});
   });
-
-//   router.get("/", async (req, res) => {
-// 	const items = await Item.find({});
-// 	res.render("/items/test");
-//   });
 
 
 router.get("/:id", async (req, res, next) => {
 const { id } = req.params;
 	try {
-		const item = await item.findById(id);
+		const item = await Item.findById(id);
+		
 		console.log(item);
-		res.render("items/detail", { item });
+		res.render("items/detail", { item: item });
 	} catch (e) {
 		next(e);
 	}
@@ -35,8 +31,8 @@ router.post(
 async (req, res) => {
 	const newItem = new Item(req.body);
 	await newItem.save();
-	console.log(req.body);
-	res.redirect(`/${newItem._id}`);
+	console.log(newItem._id);
+	res.redirect(`/items/${newItem._id}`);
 }
 );
 
@@ -45,32 +41,28 @@ router.get("/:id/edit", async (req, res, next) => {
 try {
 	const { id } = req.params;
 	const item = await Item.findById(id);
-	res.render("items/edit", { item });
+	res.render("items/edit", { item: item });
 } catch (e) {
 	next(e);
 }
 });
 
-// U-Update the edit product form and put data
 router.put(
 "/:id",
-
-async (req, res) => {
-
-	const { id } = req.params;
-	const item = await item.findByIdAndUpdate(id, req.body, {
-	runValidators: true,
-	new: true,
-	});
-
-	res.redirect(`/${newitem._id}`);
-}
+	async (req, res) => {
+		const { id } = req.params;
+		const item = await Item.findByIdAndUpdate(id, req.body, {
+		runValidators: true,
+		new: true,
+		});
+		res.redirect(`/items/${item._id}`);
+	}
 );
 
 // D-Delete the product and its data
 router.delete("/:name", async (req, res) => {
 const { id } = req.params;
-const deleted = await item.findByIdAndDelete(id);
+const deleted = await Item.findByIdAndDelete(id);
 res.redirect("/items");
 });
 

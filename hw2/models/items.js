@@ -19,8 +19,8 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-});
+},{ autoCreate: false, autoIndex: false });
 
-const Item = mongoose.model("Item", itemSchema);
+const Item = mongoose.model("items", itemSchema);
 
 module.exports = Item;

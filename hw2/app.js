@@ -1,9 +1,7 @@
 const express = require("express");
 const app = express();
-
 const dotenv = require("dotenv");
 dotenv.config();
-
 const path = require("path");
 const itemRoutes = require("./routes/wishlists");
 const methodOverride = require("method-override");
@@ -13,10 +11,9 @@ const uri =  process.env.mongodb;
 
 console.log(uri);
 try {
-  // Connect to the MongoDB cluster
   mongoose.connect(
     uri,
-    { useNewUrlParser: true, useUnifiedTopology: true },
+    { useNewUrlParser: true, useUnifiedTopology: true , dbName: 'hw2'},
     () => console.log(" Mongoose is connected")
   );
 } catch (e) {

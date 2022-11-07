@@ -5,19 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>WishList</title>
-	<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 </head>
 <body>
 	<h1>Display Current WishList</h1>
 
 	<h2>Wishlist Item Name</h2>
+		
 
-		<%wishlist.forEach(item =>{%>
-			<p><a href='/items/<%= item.name%>'><%= item.name %></a></p>
+		<%items.forEach(item =>{%>
+			<p><a href='/items/<%= item._id%>'><%= item.name %></a></p>
 		<%})%>
-
-		<a href='/items/<%= items.name%>/edit'>Go to edit wishlist item</a>
 	
 </body>
 </html>
