@@ -26,13 +26,13 @@ module.exports = {
         }
     },
 	readAll: async function(){
-		const cursor = await client.db("hw2").collection("wishlists").find();
+		const cursor = await client.db("hw2").collection("wishlist").find();
 		const data = await cursor.toArray();
 		// const result = await client.db("CS5610").collection("wishlists").insertOne(newitem);
 		return data;
 	},
     readOne: async function (filter) {
-         const result = await client.db("hw2").collection("wishlists").findOne(filter);
+         const result = await client.db("hw2").collection("wishlist").findOne(filter);
 
         return result;
     }
