@@ -6,7 +6,7 @@ const path = require("path");
 const itemRoutes = require("./routes/wishlists");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 3030;
+const PORT = process.env.PORT || 3000;
 
 const uri =  process.env.mongodb;
 
