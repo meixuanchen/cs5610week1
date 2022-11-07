@@ -17,8 +17,6 @@ router.get("/:id", async (req, res, next) => {
 const { id } = req.params;
 	try {
 		const item = await Item.findById(id);
-		
-		console.log(item);
 		res.render("items/detail", { item: item });
 	} catch (e) {
 		next(e);
@@ -30,7 +28,6 @@ router.post(
 async (req, res) => {
 	const newItem = new Item(req.body);
 	await newItem.save();
-	console.log(newItem._id);
 	res.redirect(`/items/${newItem._id}`);
 }
 );

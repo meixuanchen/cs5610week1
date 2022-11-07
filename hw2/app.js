@@ -40,7 +40,7 @@ app.use((req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log("app is listening on port 3000");
+  console.log("app is listening on port");
 });
 
 app.use(express.urlencoded({ extended: true }));
