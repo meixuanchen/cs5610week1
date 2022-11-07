@@ -1,56 +1,64 @@
-const express = require('express');
-// const router = require('./routes/wishlists');
-const path = require('path');
-// const db = require('./db');
-const ejs = require('ejs');
+const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-// db.connectionToDB();
 
-// const {connectionToDB, readAll, addToDB} = require('./db');
-// connectionToDB();
-
-const dotenv = require('dotenv');
-// const db = require('./db');
-const uri = process.env.mongodb;
-mongoose.connect('mongodb+srv://com784512:cs5610@cluster5610.x4ibwxc.mongodb.net/hw2?retryWrites=true&w=majority');
-
+const dotenv = require("dotenv");
 dotenv.config();
 
+const path = require("path");
+const itemRoutes = require("./routes/wishlists");
+const methodOverride = require("method-override");
+const mongoose = require("mongoose");
 
-app.use(express.json());
-app.use(express.urlencoded());
+const uri =  process.env.mongodb;
 
-const port = 3000;
-// app.set("views", "views");
-app.set("view engine", "ejs");
-app.use(express.static("public"));
-// app.use("/api/newitem", router);
-
-
-app.listen(port,()=>{
-	console.log(`listening on port ${port}`);
-})
-
-const itemSchema = {
-	name: String,
-	price: String
+console.log(uri);
+try {
+  // Connect to the MongoDB cluster
+  mongoose.connect(
+    uri,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => console.log(" Mongoose is connected")
+  );
+} catch (e) {
+  console.log("could not connect");
 }
-const wishlist = mongoose.model('wishlist', itemSchema);
-console.log(wishlist.find({}));
 
-app.get("/", function(req,res){
-	wishlist.find({}, function(error, item){
-		console.log(item);
-		res.render('index',{
-			wishlist: item
-		})
-	})
-	
+
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
+
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+
+app.use("/items", itemRoutes);
+
+app.use((err, req, res, next) => {
+  res.status(404).render("404");
 });
 
-// app.listen(port,()=>{
-// 	console.log(`listening on port ${port}`);
-// 	connectionToDB();
-// });
+app.use((req, res) => {
+  res.status(404).render("404");
+});
 
+app.listen((port = process.env.PORT || 80), () => {
+  console.log("app is listening on port 3000");
+});
+
+// app.get("/", async function(req,res){
+// 	const data = await readAll();
+// 	res.render('index',{
+// 		wishlist: data
+// 	});
+// })
+
+app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride("_method"));
+
+app.use((err, req, res, next) => {
+	res.status(404).render("404");
+  });
+
+  app.use((req, res) => {
+	res.status(404).render("404");
+  });
+  
