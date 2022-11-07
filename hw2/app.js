@@ -6,6 +6,7 @@ const path = require("path");
 const itemRoutes = require("./routes/wishlists");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
+const PORT = process.env.PORT || 3030;
 
 const uri =  process.env.mongodb;
 
@@ -38,7 +39,7 @@ app.use((req, res) => {
   res.status(404).render("404");
 });
 
-app.listen((port = process.env.PORT || 80), () => {
+app.listen(PORT, () => {
   console.log("app is listening on port 3000");
 });
 
