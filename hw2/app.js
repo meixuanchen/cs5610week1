@@ -23,6 +23,7 @@ try {
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use("/public", express.static(__dirname + "/public"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
@@ -40,13 +41,6 @@ app.use((req, res) => {
 app.listen((port = process.env.PORT || 80), () => {
   console.log("app is listening on port 3000");
 });
-
-// app.get("/", async function(req,res){
-// 	const data = await readAll();
-// 	res.render('index',{
-// 		wishlist: data
-// 	});
-// })
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
