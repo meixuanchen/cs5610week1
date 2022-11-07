@@ -8,13 +8,13 @@
   </head>
   <body>
 
-	<form action="/items/<%= item._id%>?_method=put" method="post">
+	<form action="/items" method="post">
 		<label for="name">Enter Item's Name: </label>
-		<input id="name" type="text" name="name" value = '<%= item.name %>'>
+		<input id="name" type="text" name="name">
 		<label for="price">Enter Item's Price: </label>
-		<input id="price" type="text" name="price" value = '<%= item.price %>'>
+		<input id="price" type="text" name="price">
 		<label for="description">Enter Item's Description: </label>
-		<input id="description" type="text" name="description" value = '<%= item.description %>' >
+		<input id="description" type="text" name="description">
 		<input type="submit" value="Submit">
 		</form>
 		<p><a href='/items'>Go back to view full wishlist</a></p>
